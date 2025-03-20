@@ -49,9 +49,7 @@ def get_db():
         db.close()
 
 
-
-
-@app.post("/leave-request/", response_model=LeaveResponseSchema)
+@app.post("/api/v1/leave-request/", response_model=LeaveResponseSchema)
 async def create_leave_request(
     leave_request_data: LeaveSchema,
     db: Session = Depends(get_db)
@@ -72,7 +70,7 @@ async def create_leave_request(
     return db_item
 
 
-@app.get("/leave-request/{employee_id}", response_model=List[LeaveResponseSchema])
+@app.get("/api/v1/leave-request/{employee_id}", response_model=List[LeaveResponseSchema])
 async def create_leave_request(
     employee_id: str = Path(),
     db: Session = Depends(get_db)
